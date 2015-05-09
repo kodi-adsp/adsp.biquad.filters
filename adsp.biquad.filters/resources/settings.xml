@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+	<setting id="postprocess_eq"   type="bool" label="30120" default="true"/>
+	<setting id="preprocess_eq"    type="bool" label="30121" default="false"/>
+	<setting id="parameter_fading" type="bool" label="30122" default="false"/>
+</settings>
