@@ -1,0 +1,115 @@
+# Kodi language file
+# Addon Name: AudioDSP parametric EQ
+# Addon id: adsp.parametric.eq
+# Addon version: 0.0.1
+# Addon Provider: Achim Turan, Team Kodi
+msgid ""
+msgstr ""
+"Project-Id-Version: XBMC Main Translation Project (Frodo)\n"
+"Report-Msgid-Bugs-To: http://trac.xbmc.org/\n"
+"POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: XBMC Translation Team\n"
+"Language-Team: English (http://www.transifex.com/projects/p/XBMC-Main-Frodo/language/en/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#settings labels
+
+# template configuration: src/template/configuration/templateConfiguration.cpp
+msgctxt "#30000"
+msgid "Parametric EQ"
+msgstr ""
+
+# template configuration: src/template/configuration/templateConfiguration.cpp
+msgctxt "#30001"
+msgid "Setup Parametric EQ"
+msgstr ""
+
+# template configuration: src/template/configuration/templateConfiguration.cpp
+msgctxt "#30002"
+msgid "10 frequency bands + post gain"
+msgstr ""
+
+# template configuration: src/template/configuration/templateConfiguration.cpp
+msgctxt "#30003"
+msgid "ToDo: Place a help for Parametric EQ. All strings are placed in resources/language/<Language>/strings.po"
+msgstr ""
+
+# Dialog Parametric EQ: resources/skins/Confluence/720p/DialogParametricEQ.xml
+msgctxt "#30100"
+msgid "Parametric EQ - Settings"
+msgstr ""
+
+# Parametric EQ Addon Settings: resources/settings.xml
+msgctxt "#30120"
+msgid "Enable Postprocess Parametric EQ"
+msgstr ""
+
+# Parametric EQ Addon Settings: resources/settings.xml
+msgctxt "#30111"
+msgid "Enable Preprocess Parametric EQ"
+msgstr ""
+
+# Parametric EQ Addon Settings: resources/parametricEQSettings.xml
+msgctxt "#30122"
+msgid "Enable Parameter Fading"
+msgstr ""
+
+# Dialog Parametric EQ: resources/skins/Confluence/720p/DialogParametricEQ.xml
+msgctxt "#30150"
+msgid "Preamp"
+msgstr ""
+
+# Dialog Parametric EQ: resources/skins/Confluence/720p/DialogParametricEQ.xml
+msgctxt "#30151"
+msgid "32Hz"
+msgstr ""
+
+# Dialog Parametric EQ: resources/skins/Confluence/720p/DialogParametricEQ.xml
+msgctxt "#30152"
+msgid "64Hz"
+msgstr ""
+
+# Dialog Parametric EQ: resources/skins/Confluence/720p/DialogParametricEQ.xml
+msgctxt "#30153"
+msgid "125Hz"
+msgstr ""
+
+# Dialog Parametric EQ: resources/skins/Confluence/720p/DialogParametricEQ.xml
+msgctxt "#30154"
+msgid "250Hz"
+msgstr ""
+
+# Dialog Parametric EQ: resources/skins/Confluence/720p/DialogParametricEQ.xml
+msgctxt "#30155"
+msgid "500Hz"
+msgstr ""
+
+# Dialog Parametric EQ: resources/skins/Confluence/720p/DialogParametricEQ.xml
+msgctxt "#30156"
+msgid "1kHz"
+msgstr ""
+
+# Dialog Parametric EQ: resources/skins/Confluence/720p/DialogParametricEQ.xml
+msgctxt "#30157"
+msgid "2kHz"
+msgstr ""
+
+# Dialog Parametric EQ: resources/skins/Confluence/720p/DialogParametricEQ.xml
+msgctxt "#30158"
+msgid "4kHz"
+msgstr ""
+
+# Dialog Parametric EQ: resources/skins/Confluence/720p/DialogParametricEQ.xml
+msgctxt "#30159"
+msgid "8kHz"
+msgstr ""
+
+# Dialog Parametric EQ: resources/skins/Confluence/720p/DialogParametricEQ.xml
+msgctxt "#30160"
+msgid "16kHz"
+msgstr ""
