@@ -21,7 +21,7 @@
 
 #include <string>
 #include <kodi/kodi_adsp_types.h>
-#include <kodi/threads/mutex.h>
+#include <platform/threads/mutex.h>
 
 #include "../configuration/templateConfiguration.h"
 #include "ADSPProcessorHandle.h"

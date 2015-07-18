@@ -19,7 +19,7 @@
  */
 
 #include <string>
-#include <kodi/util/util.h>
+#include <platform/util/util.h>
 
 #include "include/client.h"
 
