@@ -26,12 +26,12 @@ msgstr ""
 
 # template configuration: src/template/configuration/templateConfiguration.cpp
 msgctxt "#30001"
-msgid "Setup Parametric EQ"
+msgid "Setup - Parametric EQ"
 msgstr ""
 
 # template configuration: src/template/configuration/templateConfiguration.cpp
 msgctxt "#30002"
-msgid "10 frequency bands + post gain"
+msgid "10 frequency bands plus post gain"
 msgstr ""
 
 # template configuration: src/template/configuration/templateConfiguration.cpp
@@ -46,17 +46,17 @@ msgstr ""
 
 # Parametric EQ Addon Settings: resources/settings.xml
 msgctxt "#30120"
-msgid "Enable Postprocess Parametric EQ"
+msgid "Enable post-processing - Parametric EQ"
 msgstr ""
 
 # Parametric EQ Addon Settings: resources/settings.xml
-msgctxt "#30111"
-msgid "Enable Preprocess Parametric EQ"
+msgctxt "#30121"
+msgid "Enable pre-processing - Parametric EQ"
 msgstr ""
 
-# Parametric EQ Addon Settings: resources/parametricEQSettings.xml
+# Parametric EQ Addon Settings: resources/settings.xml
 msgctxt "#30122"
-msgid "Enable Parameter Fading"
+msgid "Enable parameter fading"
 msgstr ""
 
 # Dialog Parametric EQ: resources/skins/Confluence/720p/DialogParametricEQ.xml
