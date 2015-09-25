@@ -16,7 +16,7 @@ include_directories(${kodiplatform_INCLUDE_DIRS}
                     ${platform_INCLUDE_DIRS}
                     ${TINYXML_INCLUDE_DIRS}
                     ${KODI_INCLUDE_DIR}
-                    ${asplib_INCLUDE_DIRS}
+                    ${ASPLIB_INCLUDE_DIRS}
                     ${PROJECT_SOURCE_DIR}/src
                     ${PROJECT_SOURCE_DIR}/src/template)
 
