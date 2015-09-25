@@ -37,6 +37,10 @@ using namespace ADDON;
 
 extern std::string adspImageUserPath;
 
+#if defined(TARGET_WINDOWS)
+  #undef CreateDirectory
+#endif
+
 //Helper function prototypes
 string GetSettingsFile();
 
@@ -70,6 +74,12 @@ bool CADSPAddonHandler::Init()
     imagePath += adspImageUserPath + "\\";
   }
   string temp;
+  
+  // create addon user path
+  if (!KODI->DirectoryExists(g_strUserPath.c_str()))
+  {
+    KODI->CreateDirectory(g_strUserPath.c_str());
+  }
 
 #ifdef ADSP_ADDON_USE_INPUTRESAMPLE
   modeSettings.iUniqueDBModeId = adspInResampleUniqueDdId;
