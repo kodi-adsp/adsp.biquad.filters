@@ -73,6 +73,7 @@ class CSettingsManager
     //SettingsMap m_Settings;
     SettingsMap m_Settings;
     std::string m_XMLFilename;
+    std::string m_Path;
 
     // This method reads settings from the XML-File
     void read_SettingsXML();
