@@ -79,7 +79,7 @@ private:
   float                        *m_PostGain;
   volatile bool                 m_NewMessage;
   int                           m_MaxProcessingChannels;
-  uint                          m_MaxFreqBands;
+  uint32_t                      m_MaxFreqBands;
   int                           m_MessageType;
   void                         *m_MessagePtr;
   int                           m_MessageAudioChannel;

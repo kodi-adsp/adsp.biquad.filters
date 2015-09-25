@@ -122,7 +122,7 @@ AE_DSP_ERROR CDSPProcessor::Create()
     }
 
     // set gain values
-    for(uint idx = 0; idx < m_MaxFreqBands; idx++)
+    for(uint32_t idx = 0; idx < m_MaxFreqBands; idx++)
     {
       float gain = 0.0f;
       if(!settingsManager.get_Parametric10BandEQGain(m_Biquads[ch].AudioChannel, (CBiquadFiltersSettings::PARAMETRIC_10BAND_EQ_BANDS)idx, &gain))
@@ -158,7 +158,7 @@ unsigned int CDSPProcessor::PostProcess(unsigned int Mode_id, float **Array_in, 
     m_MessageAudioChannel = AE_DSP_CH_INVALID;
   }
 
-  for(uint ch = 0; ch < (uint)m_MaxProcessingChannels; ch++)
+  for(uint32_t ch = 0; ch < (uint32_t)m_MaxProcessingChannels; ch++)
   {
     ASPLIB_ERR err = ASPLIB_ERR_NO_ERROR;
     if(m_Biquads[ch].AudioChannel != AE_DSP_CH_LFE)
@@ -172,7 +172,7 @@ unsigned int CDSPProcessor::PostProcess(unsigned int Mode_id, float **Array_in, 
 
       if(m_PostGain[ch] != 1.0f)
       {
-        for(uint ii = 0; ii < Samples; ii++)
+        for(uint32_t ii = 0; ii < Samples; ii++)
         {
           Array_out[m_Biquads[ch].AudioChannel][ii] *= m_PostGain[ch];
         }

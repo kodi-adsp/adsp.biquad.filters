@@ -41,15 +41,15 @@ typedef struct
   BiquadDesignMethod    DesignMethod;     // Stores the Biquad Design method. For details see BiquadDesignMethod
   AE_DSP_CHANNEL        AudioChannel;     // Stores the requested AudioChannel
   AE_DSP_CHANNEL_FLAGS  ChannelFlag;      // Stores the requested AudioChannelFlag
-  unsigned int          SampleFrequency;  // Stores the used sample frequency by the Biquad.
-  unsigned int          Quantity;         // Stores the amount of used Biquads
+  uint32_t              SampleFrequency;  // Stores the used sample frequency by the Biquad.
+  uint32_t              Quantity;         // Stores the amount of used Biquads
   ASPLIB_BIQUAD_HANDLE  *BiquadHandle;    // store the Biquad Filter and the used optimization module
 }ADSP_Biquad;
 
 struct BIQUAD_INFOS
 {
-  unsigned int SampleFrequency;
-  unsigned int BiquadAmount;
+  uint32_t SampleFrequency;
+  uint32_t BiquadAmount;
   BIQUAD_INFOS() { SampleFrequency=0; BiquadAmount=0; };
 };
 
@@ -58,7 +58,7 @@ struct  BIQUAD_COEFFICIENTS
   ASPLIB_BIQUAD_COEFFICIENTS coefficients;
   float d0;
   float c0;
-  uint biquadIndex;
+  uint32_t biquadIndex;
   BIQUAD_COEFFICIENTS()
   {
     coefficients.a0 = 0.0f; coefficients.a1 = 0.0f; coefficients.a2 = 0.0f;

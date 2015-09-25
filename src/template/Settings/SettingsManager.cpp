@@ -47,7 +47,8 @@ CSettingsManager::CSettingsManager(string XMLFilename, string Path)
   {
     throw ADDON_STRING_EXCEPTION_HANDLER("Invalid XML filename!");
   }
-  m_XMLFilename = generateFilePath(Path, XMLFilename);
+  m_Path = Path;
+  m_XMLFilename = generateFilePath(m_Path, XMLFilename);
   KODI->Log(LOG_DEBUG, "CSettingsManager will save it's XML file to: %s", m_XMLFilename.c_str());
 
   m_IsSettingsXMLLoaded = false;

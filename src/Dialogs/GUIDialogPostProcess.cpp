@@ -169,7 +169,7 @@ bool CGUIDialogPostProcess::OnClick(int controlId)
         coefficientsList.clear();
         if(g_AddonHandler.GetStreamInfos(id, &streamSettings, &streamProperties, (void*)&BiquadInfos) == AE_DSP_ERROR_NO_ERROR)
         { // send new gain values to the biquad filter
-          for(uint band = 0; band < MAX_FREQ_BANDS; band++)
+          for(uint32_t band = 0; band < MAX_FREQ_BANDS; band++)
           {
             BIQUAD_COEFFICIENTS coefficients;
             ASPLIB_ERR err = CBiquadFactory::get_constQPeakingBiquadCoes(streamSettings.iProcessSamplerate, MAX_FREQ_BANDS, m_InitialGains[AE_DSP_CH_FL][band +1], band, &coefficients.coefficients);
@@ -258,7 +258,7 @@ bool CGUIDialogPostProcess::OnClick(int controlId)
         coefficientsList.clear();
         if(g_AddonHandler.GetStreamInfos(id, &streamSettings, &streamProperties, (void*)&BiquadInfos) == AE_DSP_ERROR_NO_ERROR)
         { // send new gain values to the biquad filter
-          for(uint band = 0; band < MAX_FREQ_BANDS; band++)
+          for(uint32_t band = 0; band < MAX_FREQ_BANDS; band++)
           {
             BIQUAD_COEFFICIENTS coefficients;
             ASPLIB_ERR err = CBiquadFactory::get_constQPeakingBiquadCoes(streamSettings.iProcessSamplerate, MAX_FREQ_BANDS, m_Gains[AE_DSP_CH_FL][band +1], band, &coefficients.coefficients);
@@ -343,7 +343,7 @@ bool CGUIDialogPostProcess::OnClick(int controlId)
     case SLIDER_16kHz:
     {
       // ToDo: Add spin control to control each audio channel
-      uint freqBand = controlId - SLIDER_PREAMP;
+      uint32_t freqBand = controlId - SLIDER_PREAMP;
       m_Gains[AE_DSP_CH_FL][freqBand] = m_Sliders[freqBand]->GetFloatValue();
       for(int ch = AE_DSP_CH_FR; ch < AE_DSP_CH_MAX; ch++)
       {

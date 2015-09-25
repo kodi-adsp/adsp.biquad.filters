@@ -37,6 +37,10 @@ using namespace ADDON;
 
 extern std::string adspImageUserPath;
 
+#if defined(TARGET_WINDOWS)
+  #undef CreateDirectory
+#endif
+
 //Helper function prototypes
 string GetSettingsFile();
 
@@ -70,6 +74,12 @@ bool CADSPAddonHandler::Init()
     imagePath += adspImageUserPath + "\\";
   }
   string temp;
+  
+  // create addon user path
+  if (!KODI->DirectoryExists(g_strUserPath.c_str()))
+  {
+    KODI->CreateDirectory(g_strUserPath.c_str());
+  }
 
 #ifdef ADSP_ADDON_USE_INPUTRESAMPLE
   modeSettings.iUniqueDBModeId = adspInResampleUniqueDdId;
@@ -319,8 +329,8 @@ AE_DSP_ERROR CADSPAddonHandler::SendMessageToStream(CADSPModeMessage &Message)
 
   if(Message.get_StreamId() == AE_DSP_STREAM_MAX_STREAMS)
   {
-    uint failedMessages = 0;
-    for(uint stream = 0; stream < AE_DSP_STREAM_MAX_STREAMS; stream++)
+    unsigned int failedMessages = 0;
+    for(unsigned int stream = 0; stream < AE_DSP_STREAM_MAX_STREAMS; stream++)
     {
       PLATFORM::CLockObject modeLock(m_ADSPModeLock);
       if(m_ADSPProcessor[stream])
