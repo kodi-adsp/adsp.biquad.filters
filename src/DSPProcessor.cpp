@@ -41,6 +41,8 @@ CDSPProcessor::CDSPProcessor()
   m_Biquads = NULL;
   m_TempBiquad = NULL;
   m_PostGain = NULL;
+  m_MessageArrayElements = 0;
+  m_MessagePtr = NULL;
   m_NewMessage = false;
 }
 
@@ -231,8 +233,8 @@ AE_DSP_ERROR CDSPProcessor::send_Message(CADSPModeMessage &Message)
 // ----- Biquad coefficients list message -------------------------------------------------    
     case EQ_MESSAGE_BIQUAD_COEFFICIENTS_LIST:
     {
-      BIQUAD_COEFFICIENTS_LIST *coefficientList;
-      if(Message.get_MessageDataSize() != sizeof(BIQUAD_COEFFICIENTS_LIST*) || Message.get_AudioChannel() < AE_DSP_CH_FL || Message.get_AudioChannel() > AE_DSP_CH_MAX)
+      BIQUAD_COEFFICIENTS *coefficients;
+      if(Message.get_MessageDataSize() < sizeof(BIQUAD_COEFFICIENTS) || Message.get_AudioChannel() < AE_DSP_CH_FL || Message.get_AudioChannel() > AE_DSP_CH_MAX)
       {
         KODI->Log(ADDON::LOG_ERROR, "%s line %i: ModeMessage has not the correct DataSize! On AudioChannel: %s, MessageSize: %i, MessageType: %i, ProcessingModeId: %i, StreamId: %i",
                   __func__, __LINE__, CADSPHelpers::Translate_ChID_TO_String(Message.get_AudioChannel()).c_str(),
@@ -240,16 +242,17 @@ AE_DSP_ERROR CDSPProcessor::send_Message(CADSPModeMessage &Message)
         return AE_DSP_ERROR_INVALID_PARAMETERS;
       }
 
-      AE_DSP_ERROR err = Message.get_MessageData((void*)&coefficientList);
+      AE_DSP_ERROR err = Message.get_MessageDataPtr((void*&)coefficients);
       if(err != AE_DSP_ERROR_NO_ERROR)
       {
         return err;
       }
 
       // create temporary Message Data
-      m_MessagePtr = (void*)coefficientList;
+      m_MessagePtr = (void*)coefficients;
       m_MessageAudioChannel = Message.get_AudioChannel();
       m_MessageType = Message.get_MessageType();
+      m_MessageArrayElements = Message.get_MessageDataSize() / sizeof(BIQUAD_COEFFICIENTS);
       m_NewMessage = true;
 
       // wait until the message is processed
@@ -349,7 +352,7 @@ void CDSPProcessor::process_NewMessage()
 // ----- Biquad coefficients list message -------------------------------------------------    
     case EQ_MESSAGE_BIQUAD_COEFFICIENTS_LIST:
     {
-      BIQUAD_COEFFICIENTS_LIST *p = static_cast<BIQUAD_COEFFICIENTS_LIST*>(m_MessagePtr);
+      BIQUAD_COEFFICIENTS *p = (BIQUAD_COEFFICIENTS*)(m_MessagePtr);
       if(m_MessageAudioChannel == AE_DSP_CH_MAX)
       {
         for(int audioCh = AE_DSP_CH_FL; audioCh < AE_DSP_CH_MAX; audioCh++)
@@ -358,9 +361,9 @@ void CDSPProcessor::process_NewMessage()
           { // Search the requested audio channel
             if(m_Biquads[biquadCh].AudioChannel == audioCh)
             {
-              for(BIQUAD_COEFFICIENTS_LIST::iterator it = p->begin(); it != p->end(); it++)
+              for(unsigned int ii = 0; ii < m_MessageArrayElements; ii++)
               {
-                ASPLIB_ERR err = CBiquadFactory::set_BiquadCoefficients(m_Biquads[biquadCh].BiquadHandle, &(it->coefficients), it->biquadIndex, it->c0, it->d0);
+                ASPLIB_ERR err = CBiquadFactory::set_BiquadCoefficients(m_Biquads[biquadCh].BiquadHandle, &(p[ii].coefficients), p[ii].biquadIndex, p[ii].c0, p[ii].d0);
               }
             }
           }
@@ -368,6 +371,7 @@ void CDSPProcessor::process_NewMessage()
       }
       else
       {
+        // TODO: Implementation for specific audio channels?
       }
     }
     break;

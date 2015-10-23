@@ -124,6 +124,19 @@ AE_DSP_ERROR CADSPModeMessage::get_MessageData(void *Data)
   return AE_DSP_ERROR_NO_ERROR;
 }
 
+AE_DSP_ERROR  CADSPModeMessage::get_MessageDataPtr(void *&Ptr)
+{
+  if (!m_MessageData || !m_MessageDataSize)
+  {
+    KODI->Log(ADDON::LOG_ERROR, "%s line %i: Invalid internal MessageData pointer! Not enough free dynamic memory available?", __func__, __LINE__);
+    return AE_DSP_ERROR_FAILED;
+  }
+
+  Ptr = (void*)m_MessageData;
+
+  return AE_DSP_ERROR_NO_ERROR;
+}
+
 AE_DSP_ERROR CADSPModeMessage::set_MessageData(void *Data, size_t DataSize)
 {
   if(!Data)
