@@ -57,6 +57,8 @@ class CADSPModeMessage
     // ToDo: Description
     AE_DSP_ERROR  get_MessageData(void *Data);
     // ToDo: Description
+    AE_DSP_ERROR  get_MessageDataPtr(void *&Ptr);
+    // ToDo: Description
     AE_DSP_ERROR  set_MessageData(void *Data, size_t DataSize=0);
 
     // ToDo: Description

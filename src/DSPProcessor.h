@@ -82,5 +82,6 @@ private:
   uint32_t                      m_MaxFreqBands;
   int                           m_MessageType;
   void                         *m_MessagePtr;
+  int                           m_MessageArrayElements;
   int                           m_MessageAudioChannel;
 };

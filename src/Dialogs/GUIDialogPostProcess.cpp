@@ -158,15 +158,14 @@ bool CGUIDialogPostProcess::OnClick(int controlId)
       CADSPModeMessage message;
       message.set_AudioChannel(AE_DSP_CH_MAX);
       message.set_ProcessingModeId(POST_MODE_PARAMETRIC_EQ_ID);
-      message.set_MessageDataSize(sizeof(BIQUAD_COEFFICIENTS_LIST*));
       message.set_MessageType(CDSPProcessor::EQ_MESSAGE_BIQUAD_COEFFICIENTS_LIST);
-      BIQUAD_COEFFICIENTS_LIST coefficientsList;
+      BIQUAD_COEFFICIENTS_VECTOR coefficientsVector;
       for(AE_DSP_STREAM_ID id = 0; id < AE_DSP_STREAM_MAX_STREAMS; id++)
       {
         AE_DSP_SETTINGS streamSettings;
         AE_DSP_STREAM_PROPERTIES streamProperties;
         BIQUAD_INFOS BiquadInfos;
-        coefficientsList.clear();
+        coefficientsVector.clear();
         if(g_AddonHandler.GetStreamInfos(id, &streamSettings, &streamProperties, (void*)&BiquadInfos) == AE_DSP_ERROR_NO_ERROR)
         { // send new gain values to the biquad filter
           for(uint32_t band = 0; band < MAX_FREQ_BANDS; band++)
@@ -178,7 +177,7 @@ bool CGUIDialogPostProcess::OnClick(int controlId)
               coefficients.biquadIndex = band;
               coefficients.c0 = 1.0f;
               coefficients.d0 = 0.0f;
-              coefficientsList.push_back(coefficients);
+              coefficientsVector.push_back(coefficients);
             }
             else
             {
@@ -186,10 +185,11 @@ bool CGUIDialogPostProcess::OnClick(int controlId)
             }
           }
 
-          if(coefficientsList.size() > 0)
+          if(coefficientsVector.size() > 0)
           {
             message.set_StreamId(id);
-            message.set_MessageData((void*)&coefficientsList);
+            message.set_MessageDataSize(sizeof(BIQUAD_COEFFICIENTS)*coefficientsVector.size());
+            message.set_MessageData((void*)coefficientsVector.data());
 
             // send message to AddonHandler
             g_AddonHandler.SendMessageToStream(message);
@@ -247,15 +247,14 @@ bool CGUIDialogPostProcess::OnClick(int controlId)
       // set frequency bands to 0dB
       message.set_AudioChannel(AE_DSP_CH_MAX);
       message.set_ProcessingModeId(POST_MODE_PARAMETRIC_EQ_ID);
-      message.set_MessageDataSize(sizeof(BIQUAD_COEFFICIENTS_LIST*));
       message.set_MessageType(CDSPProcessor::EQ_MESSAGE_BIQUAD_COEFFICIENTS_LIST);
-      BIQUAD_COEFFICIENTS_LIST coefficientsList;
+      BIQUAD_COEFFICIENTS_VECTOR coefficientsVector;
       for(AE_DSP_STREAM_ID id = 0; id < AE_DSP_STREAM_MAX_STREAMS; id++)
       {
         AE_DSP_SETTINGS streamSettings;
         AE_DSP_STREAM_PROPERTIES streamProperties;
         BIQUAD_INFOS BiquadInfos;
-        coefficientsList.clear();
+        coefficientsVector.clear();
         if(g_AddonHandler.GetStreamInfos(id, &streamSettings, &streamProperties, (void*)&BiquadInfos) == AE_DSP_ERROR_NO_ERROR)
         { // send new gain values to the biquad filter
           for(uint32_t band = 0; band < MAX_FREQ_BANDS; band++)
@@ -267,7 +266,7 @@ bool CGUIDialogPostProcess::OnClick(int controlId)
               coefficients.biquadIndex = band;
               coefficients.c0 = 1.0f;
               coefficients.d0 = 0.0f;
-              coefficientsList.push_back(coefficients);
+              coefficientsVector.push_back(coefficients);
             }
             else
             {
@@ -275,10 +274,11 @@ bool CGUIDialogPostProcess::OnClick(int controlId)
             }
           }
 
-          if(coefficientsList.size() > 0)
+          if(coefficientsVector.size() > 0)
           {
+            message.set_MessageDataSize(coefficientsVector.size()*sizeof(BIQUAD_COEFFICIENTS));
             message.set_StreamId(id);
-            message.set_MessageData((void*)&coefficientsList);
+            message.set_MessageData((void*)coefficientsVector.data());
 
             // send message to AddonHandler
             g_AddonHandler.SendMessageToStream(message);

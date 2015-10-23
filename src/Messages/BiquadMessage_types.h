@@ -24,7 +24,7 @@
 #include <asplib/Biquads/apslib_BiquadFactory.h>
 #include <kodi/kodi_adsp_types.h>
 #include "template/ADSPHelpers.h"
-#include <list>
+#include <vector>
 
 typedef enum
 {
@@ -67,4 +67,4 @@ struct  BIQUAD_COEFFICIENTS
   };
 };
 
-typedef std::list<BIQUAD_COEFFICIENTS> BIQUAD_COEFFICIENTS_LIST;
+typedef std::vector<BIQUAD_COEFFICIENTS> BIQUAD_COEFFICIENTS_VECTOR;

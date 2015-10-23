@@ -317,9 +317,8 @@ AE_DSP_ERROR CADSPAddonHandler::GetStreamInfos(AE_DSP_STREAM_ID Id, const AE_DSP
 
 AE_DSP_ERROR CADSPAddonHandler::SendMessageToStream(CADSPModeMessage &Message)
 {
-  if( Message.get_MessageDataSize() <= 0|| 
-      Message.get_AudioChannel() <= AE_DSP_CH_INVALID ||
-      Message.get_AudioChannel() > AE_DSP_CH_MAX ||
+  if( Message.get_MessageDataSize() <= 0 ||
+      Message.get_AudioChannel() <= AE_DSP_CH_INVALID || Message.get_AudioChannel() > AE_DSP_CH_MAX ||
       !Message.get_ProcessingModeId() ||
       Message.get_StreamId() > AE_DSP_STREAM_MAX_STREAMS ||
       !Message.get_MessageType())
