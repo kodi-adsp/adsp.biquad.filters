@@ -12,6 +12,10 @@ find_package(platform REQUIRED)
 find_package(TinyXML REQUIRED)
 find_package(asplib REQUIRED)
 
+if (NOT WIN32)
+  add_definitions(-fPIC -g -O2)
+endif()
+
 include_directories(${kodiplatform_INCLUDE_DIRS}
                     ${platform_INCLUDE_DIRS}
                     ${TINYXML_INCLUDE_DIRS}
