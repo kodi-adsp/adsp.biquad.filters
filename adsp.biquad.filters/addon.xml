@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon
   id="adsp.biquad.filters"
-  version="0.0.1~alpha1"
+  version="0.0.1"
   name="Biquad Filters"
   provider-name="Achim Turan, Team KODI">
   <requires>
@@ -16,9 +16,9 @@
     library_windx="adsp.biquad.filters.dll"
     library_android="libadsp.biquad.filters.so" />
   <extension point="kodi.addon.metadata">
-    <summary lang="en">Includes several Biquad Filter processing modes</summary>
-    <description lang="en">Parametric Equalizer post processing mode with constant-Q peaking filters (Biquads or Second Order Sections). It's very flexible, because you can configure several pre- or postprocessing modes with variable Bands. E.g. postprocessing mode with 10 Bands. For better configuration of the gain of each audio band it uses peaklevel meters.</description>
-    <disclaimer lang="en">Note: it's a pre alpha version. At first please always use a low auio volume to pretect yor ears.</disclaimer>
+    <summary lang="en">Includes an equalizer post processing mode</summary>
+    <description lang="en">The first version of this add-on includes a parametric equalizer post processing mode with constant-Q peaking filters (biquad filter). It allows you to boost or cut 10 frequency bands.</description>
+    <disclaimer lang="en">Note: it's the first version. Consequently please use a low audio volume at first, which can protect your ears.</disclaimer>
     <platform>all</platform>
   </extension>
 </addon>
