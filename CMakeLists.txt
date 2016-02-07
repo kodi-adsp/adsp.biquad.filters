@@ -8,7 +8,7 @@ enable_language(CXX)
 
 find_package(kodi REQUIRED)
 find_package(kodiplatform REQUIRED)
-find_package(platform REQUIRED)
+find_package(p8-platform REQUIRED)
 find_package(TinyXML REQUIRED)
 find_package(asplib REQUIRED)
 
@@ -17,35 +17,35 @@ if (NOT WIN32)
 endif()
 
 include_directories(${kodiplatform_INCLUDE_DIRS}
-                    ${platform_INCLUDE_DIRS}
+                    ${p8-platform_INCLUDE_DIRS}
                     ${TINYXML_INCLUDE_DIRS}
                     ${KODI_INCLUDE_DIR}
                     ${ASPLIB_INCLUDE_DIRS}
                     ${PROJECT_SOURCE_DIR}/src
                     ${PROJECT_SOURCE_DIR}/src/template)
 
-set(TEMPLATE_SOURCES  src/DSPProcessor.cpp
-                      src/BiquadFiltersSettings.cpp
-                      src/ADDONOptional.cpp
-                      src/Dialogs/GUIDialogPostProcess.cpp
-                      src/template/AddonHelpers.cpp
-                      src/template/ADSPAddonHandler.cpp
-                      src/template/ADSPHelpers.cpp
-                      src/template/ADSPProcessorHandle.cpp
-                      src/template/client.cpp
-                      src/template/GUIDialogBase.cpp
-                      src/template/IADDONOptional.cpp
-                      src/template/IADSPProcessor.cpp
-                      src/template/Settings/SettingsManager.cpp
-                      src/template/Settings/SettingsHelpers.cpp
-                      src/template/Messages/ADSPModeMessage.cpp
-                      src/template/configuration/templateConfiguration.cpp)
+set(BIQUAD_SOURCES  src/DSPProcessor.cpp
+                    src/BiquadFiltersSettings.cpp
+                    src/ADDONOptional.cpp
+                    src/Dialogs/GUIDialogPostProcess.cpp
+                    src/template/AddonHelpers.cpp
+                    src/template/ADSPAddonHandler.cpp
+                    src/template/ADSPHelpers.cpp
+                    src/template/ADSPProcessorHandle.cpp
+                    src/template/client.cpp
+                    src/template/GUIDialogBase.cpp
+                    src/template/IADDONOptional.cpp
+                    src/template/IADSPProcessor.cpp
+                    src/template/Settings/SettingsManager.cpp
+                    src/template/Settings/SettingsHelpers.cpp
+                    src/template/Messages/ADSPModeMessage.cpp
+                    src/template/configuration/templateConfiguration.cpp)
 
-set(DEPLIBS ${platform_LIBRARIES}
+set(DEPLIBS ${p8-platform_LIBRARIES}
             ${ASPLIB_LIBRARIES}
             ${TINYXML_LIBRARIES})
 
-build_addon(adsp.biquad.filters TEMPLATE DEPLIBS)
+build_addon(adsp.biquad.filters BIQUAD DEPLIBS)
 
 # For generating the doxy
 find_package(Doxygen)

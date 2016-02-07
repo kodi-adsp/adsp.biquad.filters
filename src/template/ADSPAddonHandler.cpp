@@ -19,7 +19,7 @@
  */
 
 #include <string>
-#include <platform/util/util.h>
+#include <p8-platform/util/util.h>
 
 #include "include/client.h"
 
@@ -54,7 +54,7 @@ CADSPAddonHandler::CADSPAddonHandler()
 
 CADSPAddonHandler::~CADSPAddonHandler()
 {
-  PLATFORM::CLockObject modeLock(m_ADSPModeLock);
+  P8PLATFORM::CLockObject modeLock(m_ADSPModeLock);
 
   for( unsigned int ii = 0; ii < AE_DSP_STREAM_MAX_STREAMS; ii++ )
   {
@@ -215,7 +215,7 @@ bool CADSPAddonHandler::Init()
 
 void CADSPAddonHandler::Destroy()
 {
-  PLATFORM::CLockObject modeLock(m_ADSPModeLock);
+  P8PLATFORM::CLockObject modeLock(m_ADSPModeLock);
 
   for(int ii = 0; ii < AE_DSP_STREAM_MAX_STREAMS; ii++)
   {
@@ -235,7 +235,7 @@ AE_DSP_ERROR CADSPAddonHandler::StreamCreate(const AE_DSP_SETTINGS *addonSetting
     return AE_DSP_ERROR_UNKNOWN;
   }
 
-  PLATFORM::CLockObject modeLock(m_ADSPModeLock);
+  P8PLATFORM::CLockObject modeLock(m_ADSPModeLock);
   if(m_ADSPProcessor[iStreamID])
   {
     delete m_ADSPProcessor[iStreamID];
@@ -267,7 +267,7 @@ AE_DSP_ERROR CADSPAddonHandler::StreamDestroy(unsigned int Id)
 		return AE_DSP_ERROR_UNKNOWN;
 	}
 
-  PLATFORM::CLockObject modeLock(m_ADSPModeLock);
+  P8PLATFORM::CLockObject modeLock(m_ADSPModeLock);
 	if(m_ADSPProcessor[Id])
 	{
 		delete m_ADSPProcessor[Id];
@@ -306,7 +306,7 @@ AE_DSP_ERROR CADSPAddonHandler::GetStreamInfos(AE_DSP_STREAM_ID Id, const AE_DSP
     return AE_DSP_ERROR_INVALID_PARAMETERS;
   }
 
-  PLATFORM::CLockObject modeLock(m_ADSPModeLock);
+  P8PLATFORM::CLockObject modeLock(m_ADSPModeLock);
   if(!m_ADSPProcessor[Id])
   {
     return AE_DSP_ERROR_REJECTED;
@@ -331,7 +331,7 @@ AE_DSP_ERROR CADSPAddonHandler::SendMessageToStream(CADSPModeMessage &Message)
     unsigned int failedMessages = 0;
     for(unsigned int stream = 0; stream < AE_DSP_STREAM_MAX_STREAMS; stream++)
     {
-      PLATFORM::CLockObject modeLock(m_ADSPModeLock);
+      P8PLATFORM::CLockObject modeLock(m_ADSPModeLock);
       if(m_ADSPProcessor[stream])
       {
         AE_DSP_ERROR err = m_ADSPProcessor[stream]->send_Message(Message);
@@ -357,7 +357,7 @@ AE_DSP_ERROR CADSPAddonHandler::SendMessageToStream(CADSPModeMessage &Message)
       return AE_DSP_ERROR_INVALID_PARAMETERS;
     }
 
-    PLATFORM::CLockObject modeLock(m_ADSPModeLock);
+    P8PLATFORM::CLockObject modeLock(m_ADSPModeLock);
     if(!m_ADSPProcessor[Message.get_StreamId()])
     {
       return AE_DSP_ERROR_IGNORE_ME;
