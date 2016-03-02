@@ -29,7 +29,7 @@
 
 // include kodi platform header files
 #include <kodi/kodi_adsp_dll.h>
-#include <platform/util/util.h>
+#include <p8-platform/util/util.h>
 
 // include adsp template specific header files
 #include "include/client.h"
