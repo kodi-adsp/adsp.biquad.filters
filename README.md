@@ -1,6 +1,6 @@
 #### CI Testing
 * Tarvis-CI for OS X, iOS, Linux [![Build Status](https://travis-ci.org/kodi-adsp/adsp.biquad.filters.svg?branch=master)](https://travis-ci.org/kodi-adsp/adsp.biquad.filters)
-* AppVeyor for Windows [![Build status](https://ci.appveyor.com/api/projects/status/59a0lu3lbtlb99n2/branch/master?svg=true)](https://ci.appveyor.com/project/AchimTuran/adsp-biquad-filters/branch/master)
+* AppVeyor for Windows [![Build status](https://ci.appveyor.com/api/projects/status/0gq3stafp9mqoi82/branch/master?svg=true)](https://ci.appveyor.com/project/james4kodi-adsp/adsp-biquad-filters/branch/master)
 * Code analyses for Linux [![Coverity Scan Build Status](https://scan.coverity.com/projects/5120/badge.svg)](https://scan.coverity.com/projects/5120)
 
 # Biquad Filters AudioDSP add-on for [Kodi] (http://kodi.tv)
