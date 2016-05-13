@@ -19,7 +19,7 @@
  *
  */
 
-#include <kodi/kodi_adsp_types.h>
+#include <kodi_adsp_types.h>
 #include "../configuration/templateConfiguration.h"
 
 //!	This is the interface class and you must derive your processing class from this interface.

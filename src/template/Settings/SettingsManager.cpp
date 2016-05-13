@@ -26,7 +26,7 @@
 #include "SettingsHelpers.h"
 #include "SettingsManager.h"
 #include "../AddonExceptions/TAddonException.h"
-#include "kodi/libXBMC_addon.h"
+#include "libXBMC_addon.h"
 #include "exception"
 
 using namespace ADDON;

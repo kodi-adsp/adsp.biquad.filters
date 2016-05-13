@@ -24,7 +24,7 @@
 #include <string>
 // reserved for future implementation
 //#include <exception>
-#include <kodi/kodi_adsp_types.h>
+#include <kodi_adsp_types.h>
 #include "AddonHelpers.h"
 
 typedef unsigned long AE_DSP_CHANNEL_FLAGS;

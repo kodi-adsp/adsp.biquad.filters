@@ -20,7 +20,7 @@
  */
 
 #include <string>
-#include <kodi/kodi_adsp_types.h>
+#include <kodi_adsp_types.h>
 #include <p8-platform/threads/mutex.h>
 
 #include "../configuration/templateConfiguration.h"

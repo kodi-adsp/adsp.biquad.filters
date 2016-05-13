@@ -21,7 +21,7 @@
 
 #include "client.h"
 #include <string>
-#include <kodi/libKODI_guilib.h>
+#include <libKODI_guilib.h>
 
 class CGUIDialogBase
 {
