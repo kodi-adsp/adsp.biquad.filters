@@ -22,7 +22,7 @@
 
 
 #include <asplib/Biquads/apslib_BiquadFactory.h>
-#include <kodi/kodi_adsp_types.h>
+#include <kodi_adsp_types.h>
 #include "template/ADSPHelpers.h"
 #include <vector>
 

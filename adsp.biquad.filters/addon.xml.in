@@ -10,15 +10,11 @@
   </requires>
   <extension
     point="kodi.adsp"
-    library_linux="adsp.biquad.filters.so"
-    library_osx="adsp.biquad.filters.dylib"
-    library_wingl="adsp.biquad.filters.dll"
-    library_windx="adsp.biquad.filters.dll"
-    library_android="libadsp.biquad.filters.so" />
+    library_@PLATFORM@="@LIBRARY_FILENAME@"/>
   <extension point="kodi.addon.metadata">
     <summary lang="en">Includes an equalizer post processing mode</summary>
     <description lang="en">The first version of this add-on includes a parametric equalizer post processing mode with constant-Q peaking filters (biquad filter). It allows you to boost or cut 10 frequency bands.</description>
     <disclaimer lang="en">Note: it's the first version. Consequently please use a low audio volume at first, which can protect your ears.</disclaimer>
-    <platform>all</platform>
+    <platform>@PLATFORM@</platform>
   </extension>
 </addon>

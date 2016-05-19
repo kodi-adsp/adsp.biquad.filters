@@ -20,7 +20,7 @@
 
 
 
-#include <kodi/kodi_adsp_types.h>
+#include <kodi_adsp_types.h>
 
 // typedefs
 typedef unsigned char uint8_t;

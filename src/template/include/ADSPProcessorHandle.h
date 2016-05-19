@@ -19,7 +19,7 @@
  *
  */
 
-#include <kodi/kodi_adsp_types.h>
+#include <kodi_adsp_types.h>
 #include "../configuration/templateConfiguration.h"
 #include "template/include/MACROHelper.h"
 #include ADSP_PROCESSOR_HEADER_FILE
