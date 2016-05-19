@@ -21,8 +21,7 @@
 
 #include <string>
 #include <kodi_adsp_types.h>
-#include <p8-platform/threads/mutex.h>
-
+#include <platform/threads/mutex.h>
 #include "../configuration/templateConfiguration.h"
 #include "ADSPProcessorHandle.h"
 #include "template/include/ADSPModeMessage.h"
@@ -93,7 +92,7 @@ public:
   /*!
    * Mutex for safe access to processing modes
    */
-   P8PLATFORM::CMutex m_ADSPModeLock;
+   PLATFORM::CMutex m_ADSPModeLock;
 
 private:
 	//AE_DSP_SETTINGS           m_Settings;           /*!< @brief (required) the active XBMC audio settings */
