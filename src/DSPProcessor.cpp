@@ -127,7 +127,7 @@ AE_DSP_ERROR CDSPProcessor::Create()
     for(uint32_t idx = 0; idx < m_MaxFreqBands; idx++)
     {
       float gain = 0.0f;
-      if(!settingsManager.get_Parametric10BandEQGain(m_Biquads[ch].AudioChannel, (CBiquadFiltersSettings::PARAMETRIC_10BAND_EQ_BANDS)idx, &gain))
+      if(!settingsManager.get_Parametric10BandEQGain(m_Biquads[ch].AudioChannel, (CBiquadFiltersSettings::PARAMETRIC_10BAND_EQ_BANDS)(idx +1), &gain))
       {
         KODI->Log(ADDON::LOG_NOTICE, "Biquad filter settings manager returned invalid gain for biquad audio channel \"%s\" with biquad index %i. Setting gain to 0dB.", CADSPHelpers::Translate_ChID_TO_String(m_Biquads[ch].AudioChannel).c_str(), idx);
         gain = 0.0f;
