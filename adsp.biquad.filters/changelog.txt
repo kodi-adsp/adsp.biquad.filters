@@ -1,9 +1,14 @@
-0.0.2 (2016-05-19)
+0.0.2 (2016-06-18)
 - fix kodi include paths
 - linux build fixes
 - addon.xml improvements
 - p8-platform name change
 - add Travis CI and AppVeyor build
+- fix invalid settings
+- fix a crash during add-on unload
+- add estuary support with vertical sliders
+- CMake improvements
+- auto generate addon.xml
 
 0.0.1 (2015-11-29)
 - first official release
