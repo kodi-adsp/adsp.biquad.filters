@@ -11,7 +11,6 @@ enable_language(CXX)
 find_package(Kodi REQUIRED)
 find_package(kodiplatform REQUIRED)
 find_package(p8-platform REQUIRED)
-find_package(TinyXML REQUIRED)
 find_package(asplib REQUIRED)
 
 if (NOT WIN32)
@@ -20,7 +19,6 @@ endif()
 
 include_directories(${kodiplatform_INCLUDE_DIRS}
                     ${p8-platform_INCLUDE_DIRS}
-                    ${TINYXML_INCLUDE_DIRS}
                     ${KODI_INCLUDE_DIR}
                     ${ASPLIB_INCLUDE_DIRS}
                     ${PROJECT_SOURCE_DIR}/src
@@ -66,9 +64,9 @@ set(TEMPLATE_SOURCES  src/DSPProcessor.cpp
                       src/template/ADSPHelpers.h
                       src/template/doxygenDocu.h)
 
-set(DEPLIBS ${p8-platform_LIBRARIES}
-            ${ASPLIB_LIBRARIES}
-            ${TINYXML_LIBRARIES})
+set(DEPLIBS ${kodiplatform_LIBRARIES}
+            ${p8-platform_LIBRARIES}
+            ${ASPLIB_LIBRARIES})
 
 addon_source_group("${TEMPLATE_SOURCES}")
             
