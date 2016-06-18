@@ -11,6 +11,7 @@ enable_language(CXX)
 find_package(Kodi REQUIRED)
 find_package(kodiplatform REQUIRED)
 find_package(p8-platform REQUIRED)
+find_package(TinyXML REQUIRED)
 find_package(asplib REQUIRED)
 
 if (NOT WIN32)
@@ -66,7 +67,8 @@ set(TEMPLATE_SOURCES  src/DSPProcessor.cpp
 
 set(DEPLIBS ${kodiplatform_LIBRARIES}
             ${p8-platform_LIBRARIES}
-            ${ASPLIB_LIBRARIES})
+            ${ASPLIB_LIBRARIES}
+            ${TINYXML_LIBRARIES})
 
 addon_source_group("${TEMPLATE_SOURCES}")
             
