@@ -34,6 +34,7 @@ public:
   typedef enum
   {
     EQ_10BAND_UNKNOWN = -1,
+    EQ_10BAND_POST,
     EQ_10BAND_32Hz,
     EQ_10BAND_64Hz,
     EQ_10BAND_125Hz,
@@ -44,7 +45,6 @@ public:
     EQ_10BAND_4kHz,
     EQ_10BAND_8kHz,
     EQ_10BAND_16kHz,
-    EQ_10BAND_POST,
     EQ_10BAND_MAX
   }PARAMETRIC_10BAND_EQ_BANDS;
 

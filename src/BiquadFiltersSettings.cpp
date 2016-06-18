@@ -25,8 +25,9 @@
 
 using namespace std;
 
-static string stat_str10BandEQGains[] =
+static string stat_str10BandEQGains[CBiquadFiltersSettings::EQ_10BAND_MAX] =
 {
+  "gain_post",
   "gain_32Hz",
   "gain_64Hz",
   "gain_125Hz",
@@ -36,8 +37,7 @@ static string stat_str10BandEQGains[] =
   "gain_2kHz",
   "gain_4kHz",
   "gain_8kHz",
-  "gain_16kHz",
-  "gain_post"
+  "gain_16kHz"
 };
 
 CBiquadFiltersSettings::CBiquadFiltersSettings()
