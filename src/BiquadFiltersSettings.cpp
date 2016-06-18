@@ -42,16 +42,14 @@ static string stat_str10BandEQGains[CBiquadFiltersSettings::EQ_10BAND_MAX] =
 
 CBiquadFiltersSettings::CBiquadFiltersSettings()
 {
+  m_10BandEQSettings = NULL;
   Init_Parametric10BandEQSettings();
 }
 
 CBiquadFiltersSettings::~CBiquadFiltersSettings()
 {
-  if(m_10BandEQSettings)
-  {
-    delete m_10BandEQSettings;
-    m_10BandEQSettings = NULL;
-  }
+  delete m_10BandEQSettings;
+  m_10BandEQSettings = NULL;
 }
 
 CBiquadFiltersSettings &CBiquadFiltersSettings::Get()
