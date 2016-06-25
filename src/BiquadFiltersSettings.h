@@ -48,19 +48,15 @@ public:
     EQ_10BAND_MAX
   }PARAMETRIC_10BAND_EQ_BANDS;
 
-  CBiquadFiltersSettings();
-  ~CBiquadFiltersSettings();
-  static CBiquadFiltersSettings &Get();
   // returns saved gain in dB for a 10 Band EQ
   // returns true --> valid value
   // returns false --> invalid value
-  bool get_Parametric10BandEQGain(AE_DSP_CHANNEL AudioChannel, PARAMETRIC_10BAND_EQ_BANDS Band, float *Gain);
-  bool set_Parametric10BandEQGain(AE_DSP_CHANNEL AudioChannel, PARAMETRIC_10BAND_EQ_BANDS Band, float Gain);
-  void save_Parametric10BandEQSettings();
+  static void Init_Parametric10BandEQSettings();
+  static void DeInit_Parametric10BandEQSettings();
+  static bool get_Parametric10BandEQGain(AE_DSP_CHANNEL AudioChannel, PARAMETRIC_10BAND_EQ_BANDS Band, float *Gain);
+  static bool set_Parametric10BandEQGain(AE_DSP_CHANNEL AudioChannel, PARAMETRIC_10BAND_EQ_BANDS Band, float Gain);
+  static void save_Parametric10BandEQSettings();
   
   protected:
-    CSettingsManager *m_10BandEQSettings;
-
-  private:
-    void Init_Parametric10BandEQSettings();
+    static CSettingsManager *m_10BandEQSettings;
 };

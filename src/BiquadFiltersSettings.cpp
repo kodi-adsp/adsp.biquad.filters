@@ -25,7 +25,7 @@
 
 using namespace std;
 
-static string stat_str10BandEQGains[CBiquadFiltersSettings::EQ_10BAND_MAX] =
+const static string stat_str10BandEQGains[CBiquadFiltersSettings::EQ_10BAND_MAX] =
 {
   "gain_post",
   "gain_32Hz",
@@ -40,23 +40,7 @@ static string stat_str10BandEQGains[CBiquadFiltersSettings::EQ_10BAND_MAX] =
   "gain_16kHz"
 };
 
-CBiquadFiltersSettings::CBiquadFiltersSettings()
-{
-  m_10BandEQSettings = NULL;
-  Init_Parametric10BandEQSettings();
-}
-
-CBiquadFiltersSettings::~CBiquadFiltersSettings()
-{
-  delete m_10BandEQSettings;
-  m_10BandEQSettings = NULL;
-}
-
-CBiquadFiltersSettings &CBiquadFiltersSettings::Get()
-{
-  static CBiquadFiltersSettings sSettings;
-  return sSettings;
-}
+CSettingsManager *CBiquadFiltersSettings::m_10BandEQSettings = NULL;
 
 // returns saved gain in dB for a 10 Band EQ
 // returns true --> valid value
@@ -119,4 +103,10 @@ void CBiquadFiltersSettings::Init_Parametric10BandEQSettings()
 
   // If XML-File is present initialize with user settings
   m_10BandEQSettings->Init();
+}
+
+void CBiquadFiltersSettings::DeInit_Parametric10BandEQSettings()
+{
+  delete m_10BandEQSettings;
+  m_10BandEQSettings = NULL;
 }

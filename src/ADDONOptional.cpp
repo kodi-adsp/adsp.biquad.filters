@@ -54,7 +54,7 @@ unsigned int CADDONOptional::GetSettings(ADDON_StructSetting ***sSet)
 
 void CADDONOptional::Stop()
 {
-  
+  CBiquadFiltersSettings::DeInit_Parametric10BandEQSettings();
 }
 
 void CADDONOptional::FreeSettings()
@@ -103,7 +103,7 @@ bool CADDONOptional::OptionalInit()
   ADSP->AddMenuHook(&hook);
 
   // Create Biquad Filter Settings
-  CBiquadFiltersSettings::Get();
+  CBiquadFiltersSettings::Init_Parametric10BandEQSettings();
 
 	return true;
 }

@@ -93,8 +93,6 @@ AE_DSP_ERROR CDSPProcessor::Create()
     return AE_DSP_ERROR_FAILED;
   }
 
-  CBiquadFiltersSettings &settingsManager = CBiquadFiltersSettings::Get();
-
   // ToDo: bypass audio channel LFE!
   int lastAudioChannel = 0;
   for(int ch = 0; ch < m_MaxProcessingChannels; ch++)
@@ -127,7 +125,7 @@ AE_DSP_ERROR CDSPProcessor::Create()
     for(uint32_t idx = 0; idx < m_MaxFreqBands; idx++)
     {
       float gain = 0.0f;
-      if(!settingsManager.get_Parametric10BandEQGain(m_Biquads[ch].AudioChannel, (CBiquadFiltersSettings::PARAMETRIC_10BAND_EQ_BANDS)(idx +1), &gain))
+      if(!CBiquadFiltersSettings::get_Parametric10BandEQGain(m_Biquads[ch].AudioChannel, (CBiquadFiltersSettings::PARAMETRIC_10BAND_EQ_BANDS)(idx +1), &gain))
       {
         KODI->Log(ADDON::LOG_NOTICE, "Biquad filter settings manager returned invalid gain for biquad audio channel \"%s\" with biquad index %i. Setting gain to 0dB.", CADSPHelpers::Translate_ChID_TO_String(m_Biquads[ch].AudioChannel).c_str(), idx);
         gain = 0.0f;
@@ -137,7 +135,7 @@ AE_DSP_ERROR CDSPProcessor::Create()
     }
 
     // set post gain value
-    if(settingsManager.get_Parametric10BandEQGain(m_Biquads[ch].AudioChannel, CBiquadFiltersSettings::EQ_10BAND_POST, &m_PostGain[ch]))
+    if(CBiquadFiltersSettings::get_Parametric10BandEQGain(m_Biquads[ch].AudioChannel, CBiquadFiltersSettings::EQ_10BAND_POST, &m_PostGain[ch]))
     {
       m_PostGain[ch] = CADSPHelpers::Convert_dB_TO_Value(m_PostGain[ch]);
     }
