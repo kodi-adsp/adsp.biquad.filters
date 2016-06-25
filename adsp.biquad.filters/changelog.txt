@@ -1,3 +1,8 @@
+0.0.3 (2016-06-2016)
+- version bump to 0.0.3
+- fix a crash on Linux, because std::string::npos is not handled the same as under Windows
+- get rid of the CBiquadFiltersSettings singleton to safely start and shutdown XML settings file handling
+
 0.0.2 (2016-06-18)
 - fix kodi include paths
 - linux build fixes
