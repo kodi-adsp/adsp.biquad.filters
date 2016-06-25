@@ -50,7 +50,7 @@ inline unsigned int strTokenizer(std::string Str, std::string Delimiter, std::ve
   unsigned int lastPos = Str.find_first_not_of(Delimiter, 0);
   unsigned int pos = Str.find(Delimiter, lastPos);
 
-  while(std::string::npos != pos || std::string::npos != lastPos)
+  while((std::string::npos != pos || std::string::npos != lastPos) && lastPos <= Str.length())
   {
     StrTokens.push_back(Str.substr(lastPos, pos - lastPos));
     lastPos = Str.find_first_not_of(Delimiter, pos);
