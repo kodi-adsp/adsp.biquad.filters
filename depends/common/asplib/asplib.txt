@@ -1,1 +1,1 @@
-asplib https://github.com/AchimTuran/asplib da66f5173c7973cfe5c488938189a3110a28eb6b
+asplib https://github.com/AchimTuran/asplib v0.3.0
