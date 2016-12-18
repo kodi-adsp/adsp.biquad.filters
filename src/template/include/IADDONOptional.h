@@ -35,9 +35,6 @@ public:
 #ifdef ADSP_ADDON_USE_GETSETTINGS
 	virtual unsigned int GetSettings(ADDON_StructSetting ***sSet) = 0;
 #endif
-#ifdef ADSP_ADDON_USE_STOP
-	virtual void Stop() = 0;
-#endif
 #ifdef ADSP_ADDON_USE_FREESETTINGS
 	virtual void FreeSettings() = 0;
 #endif

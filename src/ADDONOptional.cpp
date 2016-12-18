@@ -52,11 +52,6 @@ unsigned int CADDONOptional::GetSettings(ADDON_StructSetting ***sSet)
 	return 0;
 }
 
-void CADDONOptional::Stop()
-{
-  
-}
-
 void CADDONOptional::FreeSettings()
 {
 }

@@ -38,7 +38,6 @@ public:
 
 	virtual ADDON_STATUS SetSetting(std::string SettingName, const void *SettingValue);
 	virtual unsigned int GetSettings(ADDON_StructSetting ***sSet);
-	virtual void Stop();
 	virtual void FreeSettings();
 	virtual void Announce(std::string Flag, std::string Sender, std::string Message, const void *Data);
 	virtual void ReadSettings(void);

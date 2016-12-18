@@ -180,13 +180,6 @@ ADDON_STATUS ADDON_SetSetting(const char *SettingName, const void *SettingValue)
 #endif
 }
 
-void ADDON_Stop()
-{
-#ifdef ADSP_ADDON_USE_STOP
-	g_AddonHandler.Stop();
-#endif
-}
-
 void ADDON_FreeSettings()
 {
 #ifdef ADSP_ADDON_USE_FREESETTINGS

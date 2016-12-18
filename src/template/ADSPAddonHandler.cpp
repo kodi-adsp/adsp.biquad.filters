@@ -221,8 +221,6 @@ void CADSPAddonHandler::Destroy()
   {
     SAFE_DELETE(m_ADSPProcessor[ii]);
   }
-
-  Stop();
 }
 
 

@@ -23,7 +23,7 @@
 #include "../configuration/templateConfiguration.h"
 
 #define USE_ADDONOPTIONAL	defined(ADSP_ADDON_USE_SETTINGS) || defined(ADSP_ADDON_USE_READSETTINGS) || \
-							defined(ADSP_ADDON_USE_GETSETTINGS) || defined(ADSP_ADDON_USE_STOP) || \
+							defined(ADSP_ADDON_USE_GETSETTINGS) || \
 							defined(ADSP_ADDON_USE_FREESETTINGS) || defined(ADSP_ADDON_USE_ANNOUNCE) || \
 							defined(ADSP_ADDON_USE_MENUHOOK)
 

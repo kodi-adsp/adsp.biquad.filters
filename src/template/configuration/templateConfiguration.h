@@ -53,8 +53,6 @@
 #define ADSP_ADDON_USE_READSETTINGS
 //! If you define this, then your ADSP addon can get settings from xbmc.
 #define ADSP_ADDON_USE_GETSETTINGS
-//! Use stop function
-#define ADSP_ADDON_USE_STOP
 //! Use free settings function
 #define ADSP_ADDON_USE_FREESETTINGS
 //! Use addon announce function
