@@ -214,21 +214,17 @@ void ADDON_DestroyInstance(int instanceType, const char* instanceID, void* insta
  * Audio DSP Client AddOn specific public library functions
  ***********************************************************/
 
-AE_DSP_ERROR GetAddonCapabilities(AE_DSP_ADDON_CAPABILITIES* pCapabilities)
+void GetCapabilities(AE_DSP_ADDON_CAPABILITIES* pCapabilities)
 {
-	if(pCapabilities == NULL)
-	{
-		return AE_DSP_ERROR_FAILED;
-	}
-
-	pCapabilities->bSupportsInputProcess    = g_AddonHandler.SupportsInputProcess();
-	pCapabilities->bSupportsPreProcess      = g_AddonHandler.SupportsPreProcess();
-	pCapabilities->bSupportsMasterProcess   = g_AddonHandler.SupportsMasterProcess();
-	pCapabilities->bSupportsPostProcess     = g_AddonHandler.SupportsPostProcess();
-	pCapabilities->bSupportsInputResample   = g_AddonHandler.SupportsInputResample();
-	pCapabilities->bSupportsOutputResample  = g_AddonHandler.SupportsOutputResample();
-
-	return AE_DSP_ERROR_NO_ERROR;
+  if(pCapabilities != nullptr)
+  {
+    pCapabilities->bSupportsInputProcess    = g_AddonHandler.SupportsInputProcess();
+    pCapabilities->bSupportsPreProcess      = g_AddonHandler.SupportsPreProcess();
+    pCapabilities->bSupportsMasterProcess   = g_AddonHandler.SupportsMasterProcess();
+    pCapabilities->bSupportsPostProcess     = g_AddonHandler.SupportsPostProcess();
+    pCapabilities->bSupportsInputResample   = g_AddonHandler.SupportsInputResample();
+    pCapabilities->bSupportsOutputResample  = g_AddonHandler.SupportsOutputResample();
+ }
 }
 
 const char* GetDSPName(void)
