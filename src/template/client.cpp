@@ -200,12 +200,12 @@ void ADDON_Announce(const char *Flag, const char *Sender, const char *Message, c
 #endif
 }
 
-ADDON_STATUS ADDON_CreateInstance(int instanceType, const char* instanceID, const void* instanceProps, void* instanceFunctions, void* kodiInstance, void** addonInstance)
+ADDON_STATUS ADDON_CreateInstance(int instanceType, const char* instanceID, KODI_HANDLE instance, KODI_HANDLE* addonInstance)
 {
   return ADDON_STATUS_UNKNOWN;
 }
 
-void ADDON_DestroyInstance(int instanceType, const char* instanceID, void* instance)
+void ADDON_DestroyInstance(int instanceType, KODI_HANDLE instance)
 {
 }
 
