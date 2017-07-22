@@ -56,11 +56,6 @@ CSettingsManager::CSettingsManager(string XMLFilename, string Path)
   m_Settings.clear();
 }
 
-CSettingsManager::~CSettingsManager()
-{
-  destroy();
-}
-
 void CSettingsManager::Init()
 {
   if(!m_IsSettingsXMLLoaded)

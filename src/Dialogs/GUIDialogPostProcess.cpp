@@ -103,7 +103,7 @@ bool CGUIDialogPostProcess::OnInit()
 
     for(int ch = AE_DSP_CH_FL; ch < AE_DSP_CH_MAX; ch++)
     {
-      if(!CBiquadFiltersSettings::Get().get_Parametric10BandEQGain((AE_DSP_CHANNEL)ch, (CBiquadFiltersSettings::PARAMETRIC_10BAND_EQ_BANDS)band, &m_InitialGains[ch][band]))
+      if(!CBiquadFiltersSettings::get_Parametric10BandEQGain((AE_DSP_CHANNEL)ch, (CBiquadFiltersSettings::PARAMETRIC_10BAND_EQ_BANDS)band, &m_InitialGains[ch][band]))
       {
         m_InitialGains[ch][band] = 0.0f;
       }
@@ -136,18 +136,17 @@ bool CGUIDialogPostProcess::OnClick(int controlId)
   {
     case BUTTON_OK:
     {
-      CBiquadFiltersSettings &settingsManager = CBiquadFiltersSettings::Get();
       for(int ch = AE_DSP_CH_FL; ch < AE_DSP_CH_MAX; ch++)
       {
         for(int band = 0; band < MAX_FREQ_BANDS +1; band++)
         {
           if(m_Gains[ch][band] != m_InitialGains[ch][band])
           {
-            settingsManager.set_Parametric10BandEQGain((AE_DSP_CHANNEL)ch, (CBiquadFiltersSettings::PARAMETRIC_10BAND_EQ_BANDS)band, m_Gains[ch][band]);
+            CBiquadFiltersSettings::set_Parametric10BandEQGain((AE_DSP_CHANNEL)ch, (CBiquadFiltersSettings::PARAMETRIC_10BAND_EQ_BANDS)band, m_Gains[ch][band]);
           }
         }
       }
-      settingsManager.save_Parametric10BandEQSettings();
+      CBiquadFiltersSettings::save_Parametric10BandEQSettings();
       this->Close();
     }
     break;

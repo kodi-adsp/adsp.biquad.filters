@@ -20,7 +20,6 @@ endif()
 
 include_directories(${kodiplatform_INCLUDE_DIRS}
                     ${p8-platform_INCLUDE_DIRS}
-                    ${TINYXML_INCLUDE_DIRS}
                     ${KODI_INCLUDE_DIR}
                     ${ASPLIB_INCLUDE_DIRS}
                     ${PROJECT_SOURCE_DIR}/src
@@ -66,7 +65,8 @@ set(TEMPLATE_SOURCES  src/DSPProcessor.cpp
                       src/template/ADSPHelpers.h
                       src/template/doxygenDocu.h)
 
-set(DEPLIBS ${p8-platform_LIBRARIES}
+set(DEPLIBS ${kodiplatform_LIBRARIES}
+            ${p8-platform_LIBRARIES}
             ${ASPLIB_LIBRARIES}
             ${TINYXML_LIBRARIES})
 

@@ -24,9 +24,11 @@
 #include "BiquadFiltersSettings.h"
 
 using namespace std;
+using namespace P8PLATFORM;
 
-static string stat_str10BandEQGains[] =
+const static string stat_str10BandEQGains[CBiquadFiltersSettings::EQ_10BAND_MAX] =
 {
+  "gain_post",
   "gain_32Hz",
   "gain_64Hz",
   "gain_125Hz",
@@ -36,29 +38,11 @@ static string stat_str10BandEQGains[] =
   "gain_2kHz",
   "gain_4kHz",
   "gain_8kHz",
-  "gain_16kHz",
-  "gain_post"
+  "gain_16kHz"
 };
 
-CBiquadFiltersSettings::CBiquadFiltersSettings()
-{
-  Init_Parametric10BandEQSettings();
-}
-
-CBiquadFiltersSettings::~CBiquadFiltersSettings()
-{
-  if(m_10BandEQSettings)
-  {
-    delete m_10BandEQSettings;
-    m_10BandEQSettings = NULL;
-  }
-}
-
-CBiquadFiltersSettings &CBiquadFiltersSettings::Get()
-{
-  static CBiquadFiltersSettings sSettings;
-  return sSettings;
-}
+CSettingsManager *CBiquadFiltersSettings::m_10BandEQSettings = NULL;
+CMutex CBiquadFiltersSettings::m_Mutex;
 
 // returns saved gain in dB for a 10 Band EQ
 // returns true --> valid value
@@ -70,6 +54,7 @@ bool CBiquadFiltersSettings::get_Parametric10BandEQGain(AE_DSP_CHANNEL AudioChan
     return false;
   }
   
+  CLockObject lock(m_Mutex);
   ISettingsElement *setting = m_10BandEQSettings->find_Setting( "parametric_eq_settings", "gain_10_bands", 
                                                                 CADSPHelpers::Translate_ChID_TO_String(AudioChannel), stat_str10BandEQGains[Band]);
   if(!setting)
@@ -83,6 +68,7 @@ bool CBiquadFiltersSettings::get_Parametric10BandEQGain(AE_DSP_CHANNEL AudioChan
 
 bool CBiquadFiltersSettings::set_Parametric10BandEQGain(AE_DSP_CHANNEL AudioChannel, PARAMETRIC_10BAND_EQ_BANDS Band, float Gain)
 {
+  CLockObject lock(m_Mutex);
   return m_10BandEQSettings->add_Setting( "parametric_eq_settings", "gain_10_bands",
                                           CADSPHelpers::Translate_ChID_TO_String(AudioChannel), stat_str10BandEQGains[Band], 
                                           ISettingsElement::FLOAT_SETTING, &Gain);
@@ -90,11 +76,13 @@ bool CBiquadFiltersSettings::set_Parametric10BandEQGain(AE_DSP_CHANNEL AudioChan
 
 void CBiquadFiltersSettings::save_Parametric10BandEQSettings()
 {
+  CLockObject lock(m_Mutex);
   m_10BandEQSettings->write_SettingsXML();
 }
 
 void CBiquadFiltersSettings::Init_Parametric10BandEQSettings()
 {
+  CLockObject lock(m_Mutex);
   m_10BandEQSettings = new CSettingsManager("parametricEQSettings.xml");
   if(!m_10BandEQSettings)
   {
@@ -121,4 +109,12 @@ void CBiquadFiltersSettings::Init_Parametric10BandEQSettings()
 
   // If XML-File is present initialize with user settings
   m_10BandEQSettings->Init();
+}
+
+void CBiquadFiltersSettings::DeInit_Parametric10BandEQSettings()
+{
+  CLockObject lock(m_Mutex);
+  m_10BandEQSettings->destroy();
+  delete m_10BandEQSettings;
+  m_10BandEQSettings = NULL;
 }

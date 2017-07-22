@@ -20,25 +20,25 @@ AE_DSP_ERROR CADSPProcessorHandle::StreamInitialize(const AE_DSP_SETTINGS *Setti
 
 float CADSPProcessorHandle::OutputResampleGetDelay()
 {
-	return (float)m_StreamSettings.iInFrames / (float)m_StreamSettings.iInSamplerate;
+	return 0.0f;
 }
 
 float CADSPProcessorHandle::PostProcessGetDelay(unsigned int Mode_id)
 {
-	return (float)m_StreamSettings.iInFrames / (float)m_StreamSettings.iInSamplerate;
+	return 0.0f;
 }
 
 float CADSPProcessorHandle::MasterProcessGetDelay()
 {
-	return (float)m_StreamSettings.iInFrames / (float)m_StreamSettings.iInSamplerate;
+	return 0.0f;
 }
 
 float CADSPProcessorHandle::PreProcessGetDelay(unsigned int Mode_id)
 {
-	return (float)m_StreamSettings.iInFrames / (float)m_StreamSettings.iInSamplerate;
+	return 0.0f;
 }
 
 float CADSPProcessorHandle::InputResampleGetDelay()
 {
-	return (float)m_StreamSettings.iInFrames / (float)m_StreamSettings.iInSamplerate;
+	return 0.0f;
 }

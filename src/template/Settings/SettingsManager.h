@@ -53,7 +53,6 @@ class CSettingsManager
 {
   public:
     CSettingsManager(std::string XMLFilename, std::string Path=g_strUserPath);
-    ~CSettingsManager();
     // This method loads settings from an XML-File, this method can only called once during the lifetime of this object
     void Init();
     // This method can create or override settings elements
@@ -65,12 +64,12 @@ class CSettingsManager
 
     // This method writes settings into the XML-File
     void write_SettingsXML();
+
+    void destroy();
         
   protected:
     ISettingsElement *CreateElement(std::string Key, ISettingsElement::SettingsTypes Type, void *Value);
     bool              SetNewElementValue(ISettingsElement *Element, void *Value);
-    void destroy();
-    //SettingsMap m_Settings;
     SettingsMap m_Settings;
     std::string m_XMLFilename;
     std::string m_Path;

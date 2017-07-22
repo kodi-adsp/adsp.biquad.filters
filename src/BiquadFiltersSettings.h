@@ -20,6 +20,7 @@
  */
 
 #include <template/Settings/SettingsManager.h>
+#include "p8-platform/threads/mutex.h"
 
 class CBiquadFiltersSettings
 {
@@ -34,6 +35,7 @@ public:
   typedef enum
   {
     EQ_10BAND_UNKNOWN = -1,
+    EQ_10BAND_POST,
     EQ_10BAND_32Hz,
     EQ_10BAND_64Hz,
     EQ_10BAND_125Hz,
@@ -44,23 +46,19 @@ public:
     EQ_10BAND_4kHz,
     EQ_10BAND_8kHz,
     EQ_10BAND_16kHz,
-    EQ_10BAND_POST,
     EQ_10BAND_MAX
   }PARAMETRIC_10BAND_EQ_BANDS;
 
-  CBiquadFiltersSettings();
-  ~CBiquadFiltersSettings();
-  static CBiquadFiltersSettings &Get();
   // returns saved gain in dB for a 10 Band EQ
   // returns true --> valid value
   // returns false --> invalid value
-  bool get_Parametric10BandEQGain(AE_DSP_CHANNEL AudioChannel, PARAMETRIC_10BAND_EQ_BANDS Band, float *Gain);
-  bool set_Parametric10BandEQGain(AE_DSP_CHANNEL AudioChannel, PARAMETRIC_10BAND_EQ_BANDS Band, float Gain);
-  void save_Parametric10BandEQSettings();
+  static void Init_Parametric10BandEQSettings();
+  static void DeInit_Parametric10BandEQSettings();
+  static bool get_Parametric10BandEQGain(AE_DSP_CHANNEL AudioChannel, PARAMETRIC_10BAND_EQ_BANDS Band, float *Gain);
+  static bool set_Parametric10BandEQGain(AE_DSP_CHANNEL AudioChannel, PARAMETRIC_10BAND_EQ_BANDS Band, float Gain);
+  static void save_Parametric10BandEQSettings();
   
   protected:
-    CSettingsManager *m_10BandEQSettings;
-
-  private:
-    void Init_Parametric10BandEQSettings();
+    static P8PLATFORM::CMutex m_Mutex;
+    static CSettingsManager *m_10BandEQSettings;
 };
